@@ -1,0 +1,19 @@
+[
+    {
+        "id": "c37a34acb0243d25",
+        "type": "file",
+        "z": "79c910d3350b7e40",
+        "name": "Append File",
+        "filename": "/home/ain/noderedwhisper.txt",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 890,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    }
+]
