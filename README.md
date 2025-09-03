@@ -86,40 +86,6 @@ The following command line options are available:
 - **--variant**: Variant of the Whisper model to use (*tiny* / *base*). If not specified, the *base* model is used.
 - **--multi-process-service**: Enables the multi-process service, to run other models on the same chip in addition to Whisper
 
-## Usage from GUI
-1. Activate the virtual environment from the repository root folder:
-
-   ```sh
-   source whisper_env/bin/activate
-   ```
-2. Install **streamlit**:
-   ```sh
-   pip install streamlit
-   ```
-3. Set the PYTHONPATH to the repository root folder:
-   ```sh
-   export PYTHONPATH=$(pwd)
-   ```
-4. Run the GUI:
-   ```
-   streamlit run gui/gui.py
-   ```
-5. The *--hw-arch* and *--variant* arguments are available for the GUI as well.
-   Please use **--** as a separator between the streamlit command and the arguments, for example:
-   ```
-   streamlit run gui/gui.py -- --hw-arch hailo8l
-   ```
-
-
-## Additional notes
-
-- This application is just an example to show how to run a Whisper-based pipeline on the Hailo-8/8L/10H AI accelerator, and it is not focused on optimal pre/post-processing.
-- Torch is still required for pre-processing. It will be removed in the next release.
-- We are considering future improvements, like:
-  - Release scripts for model conversion
-  - Optimized post-processing to improve transcription's accuracy
-  - Additional models support
-  - Dedicated C++ implementation  
 
 ## Performance Optimizations
 
@@ -132,16 +98,4 @@ This version includes several performance optimizations for real-time speech-to-
 5. **Streaming Output**: Character-by-character output streaming with the `--stream-output` parameter
 6. **Timing Analysis**: Performance profiling with the `--timing` parameter
 
-Feel free to share your suggestions in the [Hailo Community](https://community.hailo.ai/) regarding how this application can be improved.
 
-## Troubleshooting
-
-- Make sure that the microphone is connected to your host and that it can be detected by the system.
-- Post-processing is being applied to improve the quality of the transcription, e.g. applying peanlty on repeated tokens and removing model's hallucinations (if any). These methods can be modified by the user to find an optimal solution.
-- In the CLI application, the `--reuse-audio` flag can be used to load the audio acquired during the previous run, for debugging purposes.
-- If the transcription is not generated, listen to the saved audio record to make sure that the audio was actually recorded and that the quality is good.
-
-## Disclaimer
-This code example is provided by Hailo solely on an “AS IS” basis and “with all faults”. No responsibility or liability is accepted or shall be imposed upon Hailo regarding the accuracy, merchantability, completeness or suitability of the code example. Hailo shall not have any liability or responsibility for errors or omissions in, or any business decisions made by you in reliance on this code example or any part of it. If an error occurs when running this example, please open a ticket in the "Issues" tab.
-
-This example was tested on specific versions and we can only guarantee the expected results using the exact version mentioned above on the exact environment. The example might work for other versions, other environment or other HEF file, but there is no guarantee that it will.
